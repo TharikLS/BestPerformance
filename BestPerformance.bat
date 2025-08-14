@@ -19,6 +19,8 @@ echo [2]Limpar o disco
 echo [3]Defragmentar o disco
 echo [4]Tirar modo hibernacao
 echo [5]Instalar o Powershell 7
+echo [6]Instalar o Teams
+echo [7]Instalar o ThingVNC
 echo [0]sair
 set /p opcao="Digite o numero da opcao:"
 cls
@@ -28,6 +30,8 @@ if %opcao% == 2 goto clean
 if %opcao% == 3 goto defrag
 if %opcao% == 4 goto hibernacao
 if %opcao% == 5 goto installPw
+if %opcao% == 6 goto installTeams
+if %opcao% == 7 goto installVNC
 if %opcao% == 0 goto sair
 
 :temp
@@ -55,7 +59,17 @@ powercfg -h off
 pause
 goto menu
 
-:InstallPW
+:installTeams
+winget install --id=Microsoft.Teams  -e
+pause
+goto menu
+
+:installVNC
+winget install --id=GlavSoft.TightVNC  -e
+pause
+goto menu
+
+:installPW
 winget install --id Microsoft.PowerShell --source winget
 pause
 goto menu
@@ -63,4 +77,5 @@ goto menu
 :sair
 echo saindo do programa...
 timeout /t 3
+
 exit
